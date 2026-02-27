@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography | Jose Gabriel Yu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Pure CSS Smooth Scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f7ff;
+        /* Blueprint Aesthetic: Grid + Radial Glows */
+        background-image: 
+            radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+            radial-gradient(circle at bottom left, rgba(244, 241, 248, 0.5), transparent 40%),
+            linear-gradient(#e0d7ee 1.5px, transparent 1.5px),
+            linear-gradient(90deg, #e0d7ee 1.5px, transparent 1.5px);
+        background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+        color: #1a1a1a;
+        line-height: 1.9;
+        font-weight: 400;
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 2000;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+    }
+
+    .nav-logo { font-weight: 800; color: #310062; font-size: 22px; text-decoration: none; }
+    .nav-links { display: flex; gap: 5px; }
+    .nav-links a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 10px 18px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #FFD700;
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links a:hover { color: #310062; }
+    .nav-links a:hover::after { width: 20px; }
+
+    /* --- HEADER --- */
+    header {
+        padding: 180px 80px 32px;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: 56px;
+        line-height: 1.05;
+        margin: 0 0 12px;
+        color: #310062;
+        font-weight: 400;
+    }
+
+    header p {
+        margin: 0;
+        color: #6a5aa3;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+
+    header p b { color: #310062; letter-spacing: 4px; font-weight: 800; }
+
+    .rule {
+        height: 3px;
+        width: 72px;
+        background: #FFD700;
+        margin: 18px 0 0;
+    }
+
+    /* --- CONTENT BOX --- */
+    main {
+        max-width: 980px;
+        margin: 0 auto 80px;
+        padding: 0 80px;
+    }
+
+    .content-box {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 40px;
+        padding: 60px;
+        border: 1px solid #e0d7ee;
+        box-shadow: 0 20px 40px rgba(49, 0, 98, 0.05);
+    }
+
+    .bio-image {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto 40px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 4px solid #310062;
+        box-shadow: 0 10px 20px rgba(49, 0, 98, 0.1);
+    }
+
+    .bio-image img { 
+        width: 100%; 
+        display: block; 
+        object-fit: cover; 
+        transition: transform 0.5s ease;
+    }
+    
+    .bio-image:hover img {
+        transform: scale(1.05);
+    }
+
+    h2 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 38px;
+        color: #310062;
+        margin: 40px 0 15px;
+        font-weight: 400;
+        border-bottom: 1px solid #e0d7ee;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    p { 
+        text-align: justify; 
+        text-indent: 2em; 
+        margin-bottom: 25px; 
+        font-size: 18px; 
+        color: #333; 
+        font-weight: 400;
+    }
+
+    sup { font-size: 11px; color: #6a5aa3; font-weight: 600; }
+
+    /* --- STICKY BACK TO TOP BUTTON --- */
+    .sticky-top-link {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: #310062;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 20px;
+        z-index: 3000;
+        transition: 0.3s;
+    }
+
+    .sticky-top-link:hover {
+        background: #FFD700;
+        color: #310062;
+    }
+
+    .back-nav { text-align: center; margin: 60px 0 100px; }
+    .back-btn {
+        background: #FFD700;
+        color: #310062;
+        padding: 16px 35px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 800;
+        display: inline-block;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+        background: #310062;
+        color: #FFD700;
+        transform: translateY(-3px);
+    }
+
+    footer {
+        text-align: center;
+        padding: 80px;
+        background: #310062;
+        color: white;
+        font-weight: 600;
+        border-radius: 60px 60px 0 0;
+    }
+
+    @media (max-width: 768px) {
+        header { padding: 140px 40px 20px; }
+        main { padding: 0 20px 40px; }
+        header h1 { font-size: 42px; }
+        .content-box { padding: 40px 25px; }
+        .nav-links { display: none; }
+    }
+</style>
+</head>
+
+<body id="top-page">
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1>My Island Roots: <br>Gab's Journey of Growth</h1>
+    <p>A Story of Growth and Identity</p>
+    <p><b>Jose Gabriel Yu</b> | ITAD</p>
+    <div class="rule"></div>
+</header>
+
+<main>
+    <div class="content-box">
+        
+        <h2>Childhood Years</h2>
+        <div class="bio-image">
+            <img src="bio-part1.jpg" alt="Childhood outdoors">
+        </div>
+        <p>
+            I grew up in the quiet and beautiful province of Masbate, where life moved slowly and peacefully.<sup>1</sup>
+            My childhood was filled with long days under the sun and the fresh smell of grass from the open fields.<sup>2</sup>
+            I spent countless afternoons playing traditional Filipino games with school kids who became like siblings to me.<sup>3</sup>
+            We played bente uno until our legs grew tired and our laughter echoed across the street.<sup>4</sup>
+            Agawang base became our favorite pastime, especially during warm summer evenings.<sup>5</sup>
+            I also collected pogs, which felt like small treasures that made my young heart excited.<sup>6</sup>
+            Each new pog made me feel like I discovered gold.<sup>7</sup>
+            I loved climbing trees, especially mango trees that stood tall near our house.<sup>8</sup>
+            Reaching the highest branch always felt like winning a secret challenge against nature.<sup>9</sup>
+            Sometimes we would sit on the branches and tell stories while feeling the wind brush against our faces.<sup>10</sup>
+            Life in Masbate felt simple yet magical in its own way.<sup>11</sup>
+            I never had many toys, but the outdoors became my playground.<sup>12</sup>
+            I learned creativity from making games out of anything I could find.<sup>13</sup>
+            My family taught me humility and kindness at a very early age.<sup>14</sup>
+            They also taught me to appreciate small things in life.<sup>15</sup>
+            Growing up surrounded by nature made me feel connected to the world.<sup>16</sup>
+            Every day felt like a new adventure waiting for me outside our doorstep.<sup>17</sup>
+            My childhood shaped who I am today in ways I will always be grateful for.<sup>18</sup>
+            Those moments of innocence and fun remain some of my greatest memories.<sup>19</sup>
+            Masbate will forever hold the roots of my earliest and happiest days.<sup>20</sup>
+        </p>
+
+        <h2>Teenage Years</h2>
+        <div class="bio-image">
+            <img src="bio-part2.jpg" alt="Development years">
+        </div>
+        <p>
+            My high school years were a time of discovery and building new perspectives.<sup>1</sup>
+            I started taking my interest in technology more seriously during this period.<sup>2</sup>
+            Life in the province remained steady, but my mind was often elsewhere, dreaming of bigger things.<sup>3</sup>
+            I learned the value of friendship through the bonds I formed with my classmates.<sup>4</sup>
+            We spent hours talking about our futures while sitting by the bay.<sup>5</sup>
+            Those years taught me how to handle the pressure of academic life.<sup>6</sup>
+            I began to understand that hard work was the only way to reach my goals.<sup>7</sup>
+            Every challenge I faced made me more determined to succeed.<sup>8</sup>
+            I participated in school events that helped me build my confidence.<sup>9</sup>
+            The simple life in Masbate provided a grounded foundation as I grew up.<sup>10</sup>
+            I realized that my roots would always be a part of my identity.<sup>11</sup>
+            Independence started becoming more important to me as I got older.<sup>12</sup>
+            I spent my free time exploring the island’s hidden gems with my friends.<sup>13</sup>
+            The sunsets in Masbate served as a daily reminder of nature's beauty.<sup>14</sup>
+            I learned that patience is vital when waiting for big opportunities.<sup>15</sup>
+            Family remained my strongest support system throughout these changing years.<sup>16</sup>
+            I began to envision a life where I could blend my roots with modern technology.<sup>17</sup>
+            Self-discipline became a habit I tried to master every single day.<sup>18</sup>
+            My teenage years were the bridge between my childhood and the man I was becoming.<sup>19</sup>
+            They prepared me for the bigger world that was waiting just beyond the sea.<sup>20</sup>
+        </p>
+
+        <h2>College Years</h2>
+        <div class="bio-image">
+            <img src="bio-part3.jpg" alt="University life">
+        </div>
+        <p>
+            My college years at UE marked one of the most transformative stages of my life.<sup>1</sup>
+            I entered school with a strong determination to build the foundation for my future career.<sup>2</sup>
+            Everything felt new, exciting, and a little overwhelming at first.<sup>3</sup>
+            I pushed myself academically to achieve high grades.<sup>4</sup>
+            Each semester challenged me to become more disciplined.<sup>5</sup>
+            I made new friends who eventually became like family.<sup>6</sup>
+            We shared struggles, triumphs, and unforgettable memories.<sup>7</sup>
+            Group projects taught me leadership and teamwork.<sup>8</sup>
+            I joined organizations that helped me grow not only academically but socially.<sup>9</sup>
+            College exposed me to real-life responsibilities that I had never experienced before.<sup>10</sup>
+            One of the biggest challenges I faced was dealing with financial problems.<sup>11</sup>
+            I learned how to budget every allowance and prioritize needs over wants.<sup>12</sup>
+            Those struggles taught me strength and independence.<sup>13</sup>
+            Despite the difficulties, I didn’t let go of my goals.<sup>14</sup>
+            I studied late at night just to keep my grades up.<sup>15</sup>
+            Every small achievement reminded me that hard work pays off.<sup>16</sup>
+            I embraced every opportunity to improve myself.<sup>17</sup>
+            College shaped me into a stronger and more resilient person.<sup>18</sup>
+            It prepared me for the real world and the career path I wanted to pursue.<sup>19</sup>
+            In the end, college became a journey of growth, friendship, challenges, and victories.<sup>20</sup>
+        </p>
+    </div>
+</main>
+
+<a href="#top-page" class="sticky-top-link" title="Scroll to Top">↑</a>
+
+<footer>
+    © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+</footer>
+
+</body>
+</html>

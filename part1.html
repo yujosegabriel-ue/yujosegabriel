@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Java Challenge | Jose Gabriel Yu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f7ff;
+        background-image: 
+            radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+            radial-gradient(circle at bottom left, rgba(244, 241, 248, 0.5), transparent 40%),
+            linear-gradient(#e0d7ee 1.5px, transparent 1.5px),
+            linear-gradient(90deg, #e0d7ee 1.5px, transparent 1.5px);
+        background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+        color: #1a1a1a;
+        line-height: 1.9;
+        font-weight: 400; /* Force normal weight globally */
+    }
+
+    /* --- SLEEK FLOATING NAVIGATION --- */
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 2000;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+    }
+
+    .nav-logo {
+        font-weight: 800;
+        color: #310062;
+        font-size: 22px;
+        text-decoration: none;
+        letter-spacing: -1px;
+    }
+
+    .nav-links { display: flex; gap: 5px; }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 10px 18px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #FFD700;
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::after { width: 20px; }
+
+    /* --- BUCKET LIST STYLE HEADER --- */
+    header {
+        padding: 180px 80px 32px;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: 56px;
+        line-height: 1.05;
+        margin: 0 0 12px;
+        color: #310062;
+        font-weight: 400; /* Normal weight for the elegant serif */
+    }
+
+    header p {
+        margin: 0;
+        color: #6a5aa3;
+        font-weight: 600; /* Slight weight for the label */
+        font-size: 12px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+
+    .rule {
+        height: 3px;
+        width: 72px;
+        background: #FFD700;
+        margin: 18px 0 0;
+    }
+
+    /* --- MAIN CONTENT --- */
+    main {
+        padding: 40px 80px;
+        max-width: 980px;
+        margin: 0 auto 56px;
+    }
+
+    .content-box {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 40px;
+        padding: 60px;
+        border: 1px solid #e0d7ee;
+    }
+
+    /* Ultra-compact image */
+    .blog-image {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto 50px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 4px solid #310062;
+        background: white;
+    }
+
+    .blog-image img {
+        width: 100%;
+        display: block;
+    }
+
+    h2.blog-sub {
+        font-family: 'Instrument Serif', serif;
+        font-size: 32px;
+        color: #310062;
+        margin: 40px 0 15px;
+        font-weight: 400; /* Normal weight */
+    }
+
+    /* Normal Weight Paragraphs */
+    p {
+        text-align: justify;
+        text-indent: 2em;
+        margin-bottom: 25px;
+        font-size: 18px;
+        line-height: 1.9;
+        color: #333;
+        font-weight: 400; /* Explicitly not bold */
+    }
+
+    /* --- NAVIGATION BUTTONS --- */
+    .back-nav { text-align: center; margin-bottom: 100px; }
+
+    .back-btn {
+        background: #FFD700;
+        color: #310062;
+        padding: 16px 35px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 800;
+        display: inline-block;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Pure CSS Back to Top Link */
+    .sticky-top-link {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: #310062;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 20px;
+        z-index: 3000;
+        transition: 0.3s;
+    }
+
+    .sticky-top-link:hover { background: #FFD700; color: #310062; }
+
+    footer {
+        text-align: center;
+        padding: 80px;
+        background: #310062;
+        color: white;
+        font-weight: 600;
+        border-radius: 60px 60px 0 0;
+    }
+
+    @media (max-width: 768px) {
+        nav { padding: 10px 20px; width: 92%; }
+        .nav-links { display: none; }
+        header, main { padding: 140px 20px 20px; }
+        header h1 { font-size: 42px; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="top-page"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1>The Java Challenge: <br>Patience and Discipline</h1>
+    <p>Jose Gabriel Yu | ITAD</p>
+    <div class="rule"></div>
+</header>
+
+<main>
+    <div class="content-box">
+        <div class="blog-image">
+            <img src="blogs-pt3.png" alt="Java Development Concept">
+        </div>
+
+        <h2 class="blog-sub">A Love-Hate Relationship</h2>
+        <p>Every programmer has a favorite programming language, and at the same time, something they dislike about it. For me, that language is Java. I both love and hate Java because it constantly challenges me. Java is one of the most important and versatile programming languages in the current digital era, as many companies and businesses rely on it for their systems, websites, and applications. Learning Java pushed me to understand programming at a deeper level, even when it felt overwhelming.</p>
+
+        <h2 class="blog-sub">Building Discipline</h2>
+        <p>I love Java because it taught me discipline. When I first started learning it, nothing felt simple. Every class, method, and syntax rule forced me to slow down and truly understand what I was writing. Java did not allow me to take shortcuts, and because of that, it trained me to think logically and carefully. Each successful program I wrote felt like a personal achievement, as if I had earned every line of code through effort and persistence.</p>
+
+        <p>At the same time, Java can be overwhelming. There were many moments when I felt frustrated because a small mistake could cause my entire program to fail. Writing long lines of code for simple tasks sometimes made me question why I chose Java in the first place. Compared to other languages, Java often feels strict and demanding, which can be discouraging, especially when progress feels slow. These moments made me both hate Java and doubt my own abilities as a programmer.</p>
+
+        <p>However, those struggles are also the reason Java holds a special place for me. Every challenge I overcame made me more confident, not just in Java, but in my problem-solving skills. Java taught me patience, resilience, and how to handle failure. Once I started understanding its logic, learning other programming languages felt less intimidating because Java had already trained my mindset.</p>
+
+        <h2 class="blog-sub">Personal Growth & Future Paths</h2>
+        <p>In conclusion, my experience with Java has taught me more than just how to write code. It showed me the importance of patience, discipline, and perseverance in learning something difficult. Although Java often frustrated me, those challenges pushed me to grow and improve as a programmer. My personal takeaway is that struggling is part of the learning process, and mastering something hard makes future challenges easier to face. Moving forward, I plan to continue improving my Java skills while using the strong foundation it gave me to explore other programming languages with confidence.</p>
+    </div>
+</main>
+
+<div class="back-nav">
+    <a href="blogs.html" class="back-btn">← Back to Blogs</a>
+</div>
+
+<a href="#top-page" class="sticky-top-link" title="Scroll to Top">↑</a>
+
+    <footer>
+        © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+    </footer>
+
+</body>
+</html>

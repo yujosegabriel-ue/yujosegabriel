@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echoes of the Final Teamfight | Jose Gabriel Yu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Pure CSS Smooth Scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f7ff;
+        /* Blueprint Background: Grid + Radial Gradients */
+        background-image: 
+            radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+            radial-gradient(circle at bottom left, rgba(244, 241, 248, 0.5), transparent 40%),
+            linear-gradient(#e0d7ee 1.5px, transparent 1.5px),
+            linear-gradient(90deg, #e0d7ee 1.5px, transparent 1.5px);
+        background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+        color: #1a1a1a;
+        line-height: 1.9;
+        font-weight: 400;
+    }
+
+    /* --- SLEEK FLOATING NAVIGATION --- */
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 2000;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+    }
+
+    .nav-logo {
+        font-weight: 800;
+        color: #310062;
+        font-size: 22px;
+        text-decoration: none;
+        letter-spacing: -1px;
+    }
+
+    .nav-links { display: flex; gap: 5px; }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 10px 18px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #FFD700;
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links a:hover { color: #310062; }
+    .nav-links a:hover::after { width: 20px; }
+
+    /* --- EDITORIAL HEADER --- */
+    header {
+        padding: 180px 80px 32px;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: 56px;
+        line-height: 1.05;
+        margin: 0 0 12px;
+        color: #310062;
+        font-weight: 400;
+    }
+
+    header p {
+        margin: 0;
+        color: #6a5aa3;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+
+    .rule {
+        height: 3px;
+        width: 72px;
+        background: #FFD700;
+        margin: 18px 0 0;
+    }
+
+    /* --- MAIN CONTENT AREA --- */
+    main {
+        padding: 40px 80px;
+        max-width: 980px;
+        margin: 0 auto 56px;
+    }
+
+    .content-box {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 40px;
+        padding: 60px;
+        border: 1px solid #e0d7ee;
+        box-shadow: 0 20px 40px rgba(49, 0, 98, 0.05);
+    }
+
+    .blog-image {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto 50px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 4px solid #310062;
+        background: white;
+    }
+
+    .blog-image img {
+        width: 100%;
+        display: block;
+    }
+
+    h2 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 32px;
+        color: #310062;
+        margin: 40px 0 15px;
+        font-weight: 400;
+    }
+
+    p {
+        text-align: justify;
+        text-indent: 2em;
+        margin-bottom: 25px;
+        font-size: 18px;
+        line-height: 1.9;
+        color: #333;
+        font-weight: 400;
+    }
+
+    /* List styling for Lessons section */
+    .lessons-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 40px 2em;
+    }
+
+    .lessons-list li {
+        margin-bottom: 12px;
+        font-size: 18px;
+        position: relative;
+    }
+
+    .lessons-list li::before {
+        content: "→";
+        position: absolute;
+        left: -30px;
+        color: #FFD700;
+        font-weight: bold;
+    }
+
+    /* --- INTERACTIVE BUTTONS --- */
+    .back-nav { text-align: center; margin-bottom: 100px; }
+
+    .back-btn {
+        background: #FFD700;
+        color: #310062;
+        padding: 16px 35px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 800;
+        display: inline-block;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .sticky-top-link {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: #310062;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 20px;
+        z-index: 3000;
+        transition: 0.3s;
+    }
+
+    .sticky-top-link:hover {
+        background: #FFD700;
+        color: #310062;
+    }
+
+    footer {
+        text-align: center;
+        padding: 80px;
+        background: #310062;
+        color: white;
+        font-weight: 600;
+        border-radius: 60px 60px 0 0;
+    }
+
+    @media (max-width: 768px) {
+        nav { padding: 10px 20px; width: 92%; }
+        .nav-links { display: none; }
+        header, main { padding: 140px 20px 20px; }
+        header h1 { font-size: 42px; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="top-page"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+
+<header>
+    <h1>Echoes of the Final Teamfight: <br>A Legend's Perspective</h1>
+    <p>Jose Gabriel Yu | ITAD</p>
+    <div class="rule"></div>
+</header>
+
+<main>
+    <div class="content-box">
+        <div class="blog-image">
+            <img src="blogs-pt2.jpg" alt="M5 World Championship Finale">
+        </div>
+
+        <h2>The Stage is Set: A Final Showdown</h2>
+        <p>The room was quiet except for the sound of the live stream playing on my phone. My eyes were fixed on the screen as the timer passed the twenty-five-minute mark of Game 7 of the M5 World Championships... This was the final match between <strong style="color: #310062;">ONIC and AP Bren</strong>.</p>
+
+        <h2>Behind the Screen: Why I Watch</h2>
+        <p>Watching Mobile Legends tournaments has truly become one of my favorite hobbies. What started as simple curiosity slowly grew into something meaningful.</p>
+        
+        <p>Each tournament makes me appreciate the passion, skill, and dedication of the players. Watching <strong style="color: #6a4c93;">KarlTzy</strong> steal the Lord, <strong style="color: #6a4c93;">Sanford</strong> survive a clash, or <strong style="color: #6a4c93;">Jaypee</strong> set the tempo shows the depth of coordination required.</p>
+
+        <h2>Lessons from the Arena</h2>
+        <ul class="lessons-list">
+            <li><strong>Patience is key</strong> – One wrong decision can change the outcome.</li>
+            <li><strong>Teamwork matters</strong> – Even the most talented cannot win alone.</li>
+            <li><strong>Adaptability is essential</strong> – Challenges require quick adjustments.</li>
+            <li><strong>Persistence pays off</strong> – Determination can turn the tide.</li>
+            <li><strong>Passion drives excellence</strong> – Love for what you do inspires growth.</li>
+        </ul>
+
+        <h2>Final Thoughts</h2>
+        <p>In conclusion, following these tournaments has shown me that success is about growth and resilience. Observing professional players inspires me to embrace these values in my own journey, reminding me that true mastery comes from dedication and consistent effort.</p>
+    </div>
+</main>
+
+<div class="back-nav">
+    <a href="blogs.html" class="back-btn">← Back to Blogs</a>
+</div>
+
+
+<a href="#top-page" class="sticky-top-link" title="Scroll to Top">↑</a>
+
+    <footer>
+        © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+    </footer>
+
+</body>
+</html>

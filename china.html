@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination | The Yu Files</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8f7ff;
+            /* Uniform Grid Background integrated from the Bucket List project */
+            background-image: 
+                radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(244, 241, 248, 0.5), transparent 40%),
+                linear-gradient(#e0d7ee 1.5px, transparent 1.5px),
+                linear-gradient(90deg, #e0d7ee 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 30px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+        }
+
+        .nav-logo { font-weight: 800; color: #310062; font-size: 22px; text-decoration: none; }
+        .nav-links { display: flex; gap: 5px; }
+        .nav-links a { text-decoration: none; color: #4a4a4a; font-weight: 600; font-size: 13px; padding: 10px 18px; position: relative; transition: 0.3s ease; }
+        .nav-links a:hover { color: #310062; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 5px; left: 50%; width: 0; height: 2px; background: #FFD700; transition: 0.3s ease; transform: translateX(-50%); }
+        .nav-links a:hover::after { width: 20px; }
+
+        /* --- HEADER --- */
+        header {
+            padding: 180px 8% 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .dest-tag { font-size: 12px; font-weight: 800; color: #6a5aa3; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        header h1 { font-family: "Instrument Serif", serif; font-size: clamp(45px, 8vw, 85px); margin: 0; color: #310062; font-weight: 400; }
+        .rule { height: 3px; width: 72px; background: #FFD700; margin: 30px auto; }
+
+        /* --- CONTENT --- */
+        main {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+        }
+
+        .image-holder {
+            width: 100%;
+            height: 550px;
+            background: #e0d7ee;
+            border-radius: 40px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            border: 1px solid #e0d7ee;
+            box-shadow: 0 20px 40px rgba(49, 0, 98, 0.08);
+        }
+
+        .image-holder img { width: 100%; height: 100%; object-fit: cover; }
+
+        .insight-container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid #e0d7ee;
+            border-radius: 40px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 60px;
+        }
+
+        .insight-sidebar { border-right: 1px solid #e0d7ee; padding-right: 40px; }
+        .insight-sidebar h2 { font-family: "Instrument Serif", serif; font-size: 36px; color: #310062; margin-top: 0; font-weight: 400; }
+        
+        .meta-item { margin-bottom: 25px; }
+        .meta-label { display: block; font-size: 11px; font-weight: 800; color: #FFD700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .meta-value { font-size: 16px; color: #6a5aa3; font-weight: 600; }
+
+        .insight-content p { font-size: 18px; color: #444; margin-top: 0; text-align: justify; line-height: 1.8; }
+
+        .back-nav { text-align: center; margin: 80px 0; }
+        .back-btn { background: #FFD700; color: #310062; padding: 18px 40px; border-radius: 100px; text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 13px; transition: 0.3s ease; display: inline-block; }
+        .back-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #310062;
+            border-radius: 60px 60px 0 0;
+            padding: 80px 40px 40px;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .insight-container { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+            .insight-sidebar { border-right: none; border-bottom: 1px solid #e0d7ee; padding-right: 0; padding-bottom: 30px; }
+            .image-holder { height: 350px; }
+            header { padding: 140px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+
+<header>
+    <span class="dest-tag">Global Monument</span>
+    <h1>The Great Wall</h1>
+    <div class="rule"></div>
+</header>
+
+<main>
+    <div class="image-holder">
+        <img src="china.jpg" alt="Great Wall of China">
+    </div>
+
+    <section class="insight-container">
+        <div class="insight-sidebar">
+            <h2>The Vision</h2>
+            
+            <div class="meta-item">
+                <span class="meta-label">Personal Goal</span>
+                <span class="meta-value">Scaling Barriers</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Why Here?</span>
+                <span class="meta-value">Grand Scale Logic</span>
+            </div>
+
+            <div class="meta-item">
+                <span class="meta-label">Core Vibe</span>
+                <span class="meta-value">Unstoppable Drive</span>
+            </div>
+        </div>
+
+        <div class="insight-content">
+            <p>Kung sa Pinas goal ko ang summit ng Batanes, sa global scale naman, gusto kong malakihan ang Great Wall. It’s a literal representation of "breaking through walls." Sa coding, ang daming blockers, pero seeing how this wall was built reminds me na kahit gaano kalaki ang obstacle, basta may persistence, matatapos at matatapos din 'yan.</p>
+            <p>Standing here is about perspective. Gusto kong makita 'yung lawak ng mundo beyond my computer screen. It’s a reminder na as a Software Engineer, my goals shouldn't just be local; kailangan nating mag-isip sa scale na kasing-tibay at kasing-lawak ng Great Wall. No bugs, no errors, just pure unstoppable progress.</p>
+        </div>
+    </section>
+
+    <div class="back-nav">
+        <a href="dreamplaces.html" class="back-btn">← Back to Vision Board</a>
+    </div>
+</main>
+
+<footer>
+    © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+</footer>
+
+</body>
+</html>

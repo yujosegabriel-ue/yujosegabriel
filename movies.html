@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Collection | Jose Gabriel Yu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --deep-purple: #310062;
+        --accent-gold: #FFD700;
+        --soft-purple: #6a5aa3;
+        --blueprint-grid: #e0d7ee;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f7ff;
+        background-image: 
+            radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+            linear-gradient(var(--blueprint-grid) 1.5px, transparent 1.5px),
+            linear-gradient(90deg, var(--blueprint-grid) 1.5px, transparent 1.5px);
+        background-size: 100% 100%, 60px 60px, 60px 60px;
+        color: #1a1a1a;
+        line-height: 1.6;
+    }
+
+    /* --- NAVIGATION (Unified with Index) --- */
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 2000;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+    }
+
+    .nav-logo { 
+        font-weight: 800; 
+        color: var(--deep-purple); 
+        font-size: 22px; 
+        text-decoration: none; 
+        letter-spacing: -1px;
+    }
+
+    .nav-links { display: flex; gap: 5px; }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 10px 18px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gold);
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links a:hover { color: var(--deep-purple); }
+    .nav-links a:hover::after { width: 20px; }
+
+    /* --- HERO --- */
+    header {
+        padding: 180px 8% 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    header h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(60px, 10vw, 110px);
+        line-height: 0.9;
+        margin: 0;
+        color: var(--deep-purple);
+    }
+
+    header p.subtitle {
+        margin: 20px 0;
+        color: var(--soft-purple);
+        font-weight: 800;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    .intro-block {
+        max-width: 700px;
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 40px;
+    }
+
+    /* --- QUICK NAV --- */
+    .quick-nav {
+        display: flex;
+        gap: 15px;
+        margin-top: 40px;
+    }
+
+    .quick-link {
+        background: var(--deep-purple);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 12px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+
+    .quick-link:hover { background: var(--accent-gold); color: var(--deep-purple); transform: translateY(-5px); }
+
+    /* --- SECTION LAYOUT --- */
+    .section-wrapper {
+        max-width: 1200px;
+        margin: 0 auto 100px;
+        padding: 0 8%;
+    }
+
+    .editorial-block {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 60px;
+        background: white;
+        padding: 60px;
+        border-radius: 40px;
+        border: 1px solid var(--blueprint-grid);
+        margin-bottom: 40px;
+        align-items: start;
+    }
+
+    .sticky-side {
+        position: sticky;
+        top: 100px;
+    }
+
+    .side-meta img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--blueprint-grid);
+        margin-bottom: 20px;
+    }
+
+    .side-meta h2 { font-family: "Instrument Serif", serif; font-size: 42px; color: var(--deep-purple); margin: 0; }
+    .side-meta p { font-size: 15px; color: #6a5aa3; line-height: 1.7; text-align: justify; }
+
+    /* --- CONTENT CARDS --- */
+    .content-flow { display: flex; flex-direction: column; gap: 30px; }
+
+    .item-card {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 30px;
+        background: #fdfcff;
+        padding: 25px;
+        border-radius: 24px;
+        border: 1px solid #f0f0f5;
+        transition: 0.3s;
+    }
+
+    .item-card:hover { border-color: var(--deep-purple); transform: scale(1.02); }
+
+    .item-card img {
+        width: 180px;
+        height: 180px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    .item-card.cinema-card img { height: 260px; }
+
+    .item-info h3 { font-family: "Instrument Serif", serif; font-size: 28px; color: var(--deep-purple); margin: 0; }
+    .item-info .tag { font-size: 10px; font-weight: 800; color: var(--soft-purple); text-transform: uppercase; letter-spacing: 2px; display: block; margin: 5px 0 15px; }
+
+    .vibe-text {
+        font-size: 14px;
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        border-left: 4px solid var(--accent-gold);
+        color: #444;
+        margin-bottom: 15px;
+    }
+
+    audio, iframe { width: 100%; border-radius: 8px; margin-top: 10px; }
+
+    /* --- FOOTER --- */
+    footer {
+        text-align: center;
+        padding: 80px;
+        background: var(--deep-purple);
+        color: white;
+        font-weight: 800;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        border-radius: 60px 60px 0 0;
+    }
+
+    @media (max-width: 1000px) {
+        .editorial-block { grid-template-columns: 1fr; padding: 30px; }
+        .item-card { grid-template-columns: 1fr; }
+        .item-card img { width: 100%; height: 200px; }
+        .nav-links { display: none; }
+    }
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+
+<header>
+    <p class="subtitle">Frames & Filmmaking</p>
+    <h1>The Cinema</h1>
+    <div class="intro-block">
+        A curated selection of films that have left a lasting impact on my perspective. From high-stakes dramas to timeless romantic comedies, these stories represent the pinnacle of cinematic storytelling and visual artistry in my personal library.
+    </div>
+</header>
+<main>
+    <div class="section-wrapper" id="movies">
+        <div class="editorial-block" style="grid-template-columns: 1fr;">
+            <h2 style="font-family:'Instrument Serif', serif; font-size: 60px; color:var(--deep-purple); text-align:center;">Cinema & Series</h2>
+            
+            <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap:30px;">
+                <div class="item-card cinema-card">
+                    <img src="whipplash.jpg" alt="Whiplash">
+                    <div class="item-info">
+                        <h3>Whiplash</h3>
+                        <span class="tag">Film • Drama</span>
+                        <div class="vibe-text"><strong>Why I Love It:</strong> A gripping story of ambition. Its heart-pounding music sequences create an unforgettable experience.</div>
+                        <iframe height="200" src="https://www.youtube.com/embed/b9ilXLsz0KE?start=89" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="item-card cinema-card">
+                    <img src="howtolose.jpg" alt="How to Lose a Guy">
+                    <div class="item-info">
+                        <h3>How to Lose a Guy in 10 Days</h3>
+                        <span class="tag">Film • Rom-Com</span>
+                        <div class="vibe-text"><strong>Why I Love It:</strong> A perfect balance of humor and charm. A timeless, feel-good movie.</div>
+                        <iframe height="200" src="https://www.youtube.com/embed/xN2JhLUbuiE?start=4" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+    <footer>
+        © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+    </footer>
+
+</body>
+</html>

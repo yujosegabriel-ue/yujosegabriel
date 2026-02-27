@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogs | Jose Gabriel Yu</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f7ff;
+        background-image: 
+            radial-gradient(circle at top right, rgba(224, 215, 238, 0.5), transparent 40%),
+            radial-gradient(circle at bottom left, rgba(244, 241, 248, 0.5), transparent 40%),
+            linear-gradient(#e0d7ee 1.5px, transparent 1.5px),
+            linear-gradient(90deg, #e0d7ee 1.5px, transparent 1.5px);
+        background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+        color: #1a1a1a;
+        scroll-behavior: smooth;
+    }
+
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 12px 30px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(75, 0, 130, 0.05);
+    }
+
+    .nav-logo {
+        font-weight: 800;
+        color: #310062;
+        font-size: 22px;
+        text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 5px; }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 10px 18px;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #FFD700;
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::after { width: 20px; }
+
+    .hero {
+        padding: 160px 8% 80px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-family: 'Instrument Serif', serif;
+        font-size: clamp(60px, 10vw, 100px);
+        color: #310062;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        color: #5a5a5a;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .section {
+        padding: 80px 8% 120px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        padding: 40px;
+        border-radius: 32px;
+        border: 1px solid #e0d7ee;
+        transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-12px);
+        border-color: #310062;
+        background: #ffffff;
+        box-shadow: 0 30px 60px rgba(49, 0, 98, 0.08);
+    }
+
+    .glass-card h3 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 28px;
+        color: #310062;
+        margin-bottom: 10px;
+    }
+
+    .tag {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #6a5aa3;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    footer {
+        background: #310062;
+        border-radius: 60px 60px 0 0;
+        padding: 80px 40px 40px;
+        color: white;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 2px;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+        nav { padding: 10px 20px; width: 92%; }
+        .nav-links { display: none; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JG</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="beats.html">Beats</a>
+        <a href="movies.html">Movies</a>
+        <a href="series.html">Series</a>
+        <a href="dreamplaces.html">Dream Places</a>
+        <a href="bucketlist.html">Bucketlist</a>
+        <a href="mailto:yu.josegabriel@ue.edu.ph">Contact</a>
+    </div>
+</nav>
+
+
+<section class="hero">
+    <h1>My Writings</h1>
+    <p>Thoughts, lessons, and reflections from my journey in tech, creativity, and growth.</p>
+</section>
+
+<section class="section">
+    <div class="grid">
+
+        <a href="part1.html" class="glass-card">
+            <span class="tag">Technology</span>
+            <h3>The Java Challenge</h3>
+            <p>How Java taught me patience, discipline, and mental endurance.</p>
+        </a>
+
+        <a href="part2.html" class="glass-card">
+            <span class="tag">Non-Technology</span>
+            <h3>Echoes of the Final Teamfight</h3>
+            <p>How gaming inspired me to become a better person.</p>
+        </a>
+
+        <a href="part3.html" class="glass-card">
+            <span class="tag">Career and Future Goals</span>
+            <h3>Beyond the Code</h3>
+            <p>How I’m shaping my career and future goals in technology.</p>
+        </a>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 Jose Gabriel Yu • Crafted in Manila • With Love from Masbate
+</footer>
+
+</body>
+</html>
